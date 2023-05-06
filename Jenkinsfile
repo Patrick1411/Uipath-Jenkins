@@ -27,21 +27,20 @@ pipeline {
             }
         }
 
-        // Building Testsr
-        // stage('Build Tests') {
-        //     steps {
-        //         echo "Building package with ${WORKSPACE}"
-        //         UiPathPack (
-        //             outputPath: "Output\\${env.BUILD_NUMBER}",
-        //             outputType: 'Tests',
-        //             projectJsonPath: "project.json",
-        //             version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"]
-        //             useOrchestrator: true,
-        //             traceLoggingLevel: "None",
-        //             credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “credentialsId”]
-        //         )
-        //     }
-        // }
+        Building Testsr
+        stage('Build Tests') {
+            steps {
+                echo "Building package with ${WORKSPACE}"
+                UiPathPack (
+                    outputPath: "Output\\${env.BUILD_NUMBER}",
+                    outputType: 'Tests',
+                    projectJsonPath: "project.json",
+                    version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"]
+                    useOrchestrator: false,
+                    traceLoggingLevel: "None",
+                )
+            }
+        }
 
         // stage ('Deploy Tests') {
         //     steps {
