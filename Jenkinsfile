@@ -9,8 +9,7 @@ pipeline {
         UIPATH_ORCH_URL = "https://cloud.uipath.com/cicdcloud"
         UIPATH_ORCH_TENANT_NAME = "DefaultTenant"
         UIPATH_ORCH_FOLDER_NAME = "CI-CD Uipath"
-        RELEASE_NAME = "Uipath-Jenkins-CICD"
-        PACKAGE_VERSION = "1.15"
+        UIPATH_ORCH_LOGICAL_NAME = "anupaminc"
     }
 
     stages {
@@ -51,8 +50,8 @@ pipeline {
                     orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
                     folderName: "${UIPATH_ORCH_FOLDER_NAME}",
                     environments: ["Dev"],
-                    //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “credentialsId”],
-                    credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
+                    credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “credentialsId”],
+                    //credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
                     traceLevel: 'None',
                     entryPointPaths: 'Main.xaml',
                     createProcess: True
