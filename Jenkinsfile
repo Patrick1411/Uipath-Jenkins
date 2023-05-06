@@ -31,7 +31,7 @@ pipeline {
                 // Deploy the package to Orchestrator
                 script {
                     def response = sh (
-                        script: "curl -X POST -H \"Authorization: Bearer $ORCHESTRATOR_TOKEN\" -F \"file=@C:\\Projects\\Deploy\\CICD-Uipath\\CICD-Uipath.${PACKAGE_VERSION}.nupkg" -F \"json={ 'PackageVersion': '$PACKAGE_VERSION', 'Description': '$DESCRIPTION', 'ReleaseNotes': '$RELEASE_NOTES' }\" $ORCHESTRATOR_URL/odata/Processes/UiPath.Server.Configuration.OData.UploadPackage",
+                        script: "curl -X POST -H \"Authorization: Bearer $ORCHESTRATOR_TOKEN\" -F \"file=@C:\\\\Projects\\\\Deploy\\\\CICD-Uipath\\\\CICD-Uipath.${PACKAGE_VERSION}.nupkg\" -F \"json={ 'PackageVersion': '$PACKAGE_VERSION', 'Description': '$DESCRIPTION', 'ReleaseNotes': '$RELEASE_NOTES' }\" $ORCHESTRATOR_URL/odata/Processes/UiPath.Server.Configuration.OData.UploadPackage",
                         returnStdout: true
                     )
 
