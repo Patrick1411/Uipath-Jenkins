@@ -44,7 +44,7 @@ pipeline {
         // Deploy Stages
         stage ('Deploy Tests') {
             steps {
-                echo "Deploying ${BRANCH_NAME} to orchestrator"
+                echo "Deploying ${env.BRANCH_NAME} to orchestrator"
                 UiPathDeploy (
                     packagePath: "Output\\${env.BUILD_NUMBER}",
                     orchestratorAddress: "${UIPATH_ORCH_URL}",
