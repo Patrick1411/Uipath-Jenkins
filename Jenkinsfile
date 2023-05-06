@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Environment Variables
         MAJOR = '1'
-	    MINOR = '1'
+	    MINOR = '5'
         //Orchestrator Services
         UIPATH_ORCH_URL = "https://cloud.uipath.com/cicdcloud"
         UIPATH_ORCH_TENANT_NAME = "DefaultTenant"
@@ -27,7 +27,7 @@ pipeline {
             }
         }
 
-        Building Testsr
+        //Building Tests
         stage('Build Tests') {
             steps {
                 echo "Building package with ${WORKSPACE}"
