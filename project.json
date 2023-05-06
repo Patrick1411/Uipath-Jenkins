@@ -1,5 +1,5 @@
 {
-  "name": "CICD-Uipath",
+  "name": "Uipath-Jenkins",
   "description": "Test Automation Project",
   "main": "Main.xaml",
   "dependencies": {

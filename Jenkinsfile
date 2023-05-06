@@ -2,44 +2,59 @@ pipeline {
     agent any
 
     environment {
-        ORCHESTRATOR_URL = "https://cloud.uipath.com/cicdcloud"
-        TENANT_NAME = "DefaultTenant"
-        FOLDER_PATH = "/CI-CD Uipath"
+        // Environment Variables
+        MAJOR = '1'
+	    MINOR = '1'
+        //Orchestrator Services
+        UIPATH_ORCH_URL = "https://cloud.uipath.com/cicdcloud"
+        UIPATH_ORCH_TENANT_NAME = "DefaultTenant"
+        UIPATH_ORCH_FOLDER_NAME = "CI-CD Uipath"
         RELEASE_NAME = "Uipath-Jenkins-CICD"
         PACKAGE_VERSION = "1.15"
-        DESCRIPTION = "Deploy test cases to Orchestrator"
-        RELEASE_NOTES = "Release notes"
     }
 
     stages {
-        stage('Checkout') {
+
+        // Printing Basic Information:
+        stage('Preparing'){
             steps {
-                // Checkout the code from the Git repository
-                git branch: 'main', url: 'https://github.com/Patrick1411/Uipath-Jenkins-Pipepline.git'
+                echo "Jenkins Home ${env.JENKINS_HOME}"
+                echo "Jenkins URL ${env.JENKINS_URL}"
+                echo "Jenkins JOB Number ${env.BUILD_NUMBER}"
+                echo "Jenkins JOB Name ${env.JOB_NAME}"
+                echo "GitHub BranchName ${env.BRANCH_NAME}"
+                checkout scm
             }
         }
 
-        stage('Build Package') {
-            steps {
-                // Build the UiPath package
-                bat "C:\\Users\\DuyThienNguyen\\AppData\\Local\\Programs\\UiPath\\Studio\\UiRobot.exe --pack C:\\Projects\\CICD-Uipath\\project.json --output C:\\Projects\\Deploy\\CICD-Uipath.${PACKAGE_VERSION}.nupkg"
-            }
-        }
+        // Building Testsr
+        // stage('Build Tests') {
+        //     steps {
+        //         echo "Building package with ${WORKSPACE}"
+        //         UiPathPack (
+        //             outputPath: "Output\\${env.BUILD_NUMBER}",
+        //             outputType: 'Tests',
+        //             projectJsonPath: "project.json",
+        //             version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"]
+        //             useOrchestrator: true,
+        //             traceLoggingLevel: "None",
+        //             credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “credentialsId”]
+        //         )
+        //     }
+        // }
 
-        stage('Deploy Package to Orchestrator') {
-            steps {
-                // Deploy the package to Orchestrator
-                script {
-                    def response = sh (
-                        script: "curl -X POST -H \"Authorization: Bearer $ORCHESTRATOR_TOKEN\" -F \"file=@C:\\\\Projects\\\\Deploy\\\\CICD-Uipath\\\\CICD-Uipath.${PACKAGE_VERSION}.nupkg\" -F \"json={ 'PackageVersion': '$PACKAGE_VERSION', 'Description': '$DESCRIPTION', 'ReleaseNotes': '$RELEASE_NOTES' }\" $ORCHESTRATOR_URL/odata/Processes/UiPath.Server.Configuration.OData.UploadPackage",
-                        returnStdout: true
-                    )
-
-                    def packageId = response.split(': ')[1].replaceAll('"', '').trim()
-
-                    sh "curl -X POST -H \"Authorization: Bearer $ORCHESTRATOR_TOKEN\" -H \"Content-Type: application/json\" -d '{ \"Package\": { \"Id\": $packageId }, \"Name\": \"$RELEASE_NAME\", \"Description\": \"$DESCRIPTION\", \"ReleaseNotes\": \"$RELEASE_NOTES\", \"ProcessVersion\": \"$PACKAGE_VERSION\" }' $ORCHESTRATOR_URL/odata/Releases/UiPath.Server.Configuration.OData.PublishRelease?tenantName=$TENANT_NAME&folderPath=$FOLDER_PATH"
-                }
-            }
-        }
+        // stage ('Deploy Tests') {
+        //     steps {
+        //         echo "Deploying ${BRANCH_NAME} to orchestrator"
+        //         UiPathDeploy (
+        //             packagePath: "path\\to\NuGetpackage",
+        //             orchestratorAddress: "${UIPATH_ORCH_URL}",
+        //             orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
+        //             folderName: "${UIPATH_ORCH_FOLDER_NAME}",
+        //             credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “credentialsId”],
+        //             traceLoggingLevel: 'None'
+        //         )
+        //     }
+        // }
     }
 }
