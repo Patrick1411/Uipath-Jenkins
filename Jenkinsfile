@@ -22,7 +22,7 @@ pipeline {
         stage('Build Package') {
             steps {
                 // Build the UiPath package
-                bat "C:\Users\DuyThienNguyen\AppData\Local\Programs\UiPath\Studio\UiRobot.exe --pack C:\Projects\CICD-Uipath\project.json --output "C:\Projects\Deploy\CICD-Uipath.$PACKAGE_VERSION.nupkg"
+                bat "C:\Users\DuyThienNguyen\AppData\Local\Programs\UiPath\Studio\UiRobot.exe --pack C:\Projects\CICD-Uipath\project.json --output C:\Projects\Deploy\CICD-Uipath.${PACKAGE_VERSION}.nupkg"
             }
         }
 
