@@ -37,23 +37,24 @@ pipeline {
                     projectJsonPath: "project.json",
                     version: [$class: 'ManualVersionEntry', version: "${MAJOR}.${MINOR}.${env.BUILD_NUMBER}"],
                     useOrchestrator: false,
-                    traceLoggingLevel: "None",
+                    traceLoggingLevel: "None"
                 )
             }
         }
 
-        // stage ('Deploy Tests') {
-        //     steps {
-        //         echo "Deploying ${BRANCH_NAME} to orchestrator"
-        //         UiPathDeploy (
-        //             packagePath: "path\\to\NuGetpackage",
-        //             orchestratorAddress: "${UIPATH_ORCH_URL}",
-        //             orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
-        //             folderName: "${UIPATH_ORCH_FOLDER_NAME}",
-        //             credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “credentialsId”],
-        //             traceLoggingLevel: 'None'
-        //         )
-        //     }
-        // }
+        // Deploy Stages
+        stage ('Deploy Tests') {
+            steps {
+                echo "Deploying ${BRANCH_NAME} to orchestrator"
+                UiPathDeploy (
+                    packagePath: "Output\\${env.BUILD_NUMBER}",
+                    orchestratorAddress: "${UIPATH_ORCH_URL}",
+                    orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
+                    folderName: "${UIPATH_ORCH_FOLDER_NAME}",
+                    credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “credentialsId”],
+                    traceLoggingLevel: 'None'
+                )
+            }
+        }
     }
 }
