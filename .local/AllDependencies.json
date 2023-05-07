@@ -10504,7 +10504,6 @@
       "path": "nlog/4.5.11",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "lib/monoandroid44/NLog.dll",
         "lib/monoandroid44/NLog.xml",
         "lib/net35/NLog.dll",
@@ -11529,7 +11528,6 @@
       "path": "sharpziplib/1.3.3",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "images/sharpziplib-nuget-256x256.png",
         "lib/net45/ICSharpCode.SharpZipLib.dll",
         "lib/net45/ICSharpCode.SharpZipLib.pdb",
@@ -15820,7 +15818,6 @@
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "ktj1xute.1qb",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
         "lib/net45/_._",
@@ -16248,8 +16245,7 @@
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
         "system.threading.timer.4.3.0.nupkg.sha512",
-        "system.threading.timer.nuspec",
-        "woj5b4cc.l3m"
+        "system.threading.timer.nuspec"
       ]
     },
     "System.ValueTuple/4.5.0": {
@@ -16326,7 +16322,6 @@
         ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
-        "bywwhqdq.vwo",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
@@ -16398,7 +16393,6 @@
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "3eotoxpw.hov",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -17930,15 +17924,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DuyThienNguyen\\.nuget\\packages\\": {}
+    "C:\\Users\\Ninh Vu\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
-      "projectUniqueName": "CICD-Uipath",
-      "projectName": "CICD-Uipath",
-      "projectPath": "C:\\Projects\\CICD-Uipath\\.local",
-      "packagesPath": "C:\\Users\\DuyThienNguyen\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\CICD-Uipath\\.local"
+      "projectUniqueName": "Uipath-Jenkins",
+      "projectName": "Uipath-Jenkins",
+      "projectPath": "C:\\Projects\\Uipath-Jenkins\\.local",
+      "packagesPath": "C:\\Users\\Ninh Vu\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\Uipath-Jenkins\\.local"
     },
     "frameworks": {
       "net6.0-windows7.0": {
@@ -17959,7 +17953,7 @@
             "version": "[23.4.4, 23.4.4]"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\DuyThienNguyen\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Ninh Vu\\AppData\\Local\\Programs\\UiPath\\Studio\\runtime.json"
       }
     },
     "runtimes": {
