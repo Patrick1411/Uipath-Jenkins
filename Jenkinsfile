@@ -46,12 +46,10 @@ pipeline {
                 echo "Deploying ${env.BRANCH_NAME} to orchestrator"
                 UiPathDeploy (
                     packagePath: "Output\\${env.BUILD_NUMBER}",
-                    orchestratorAddress: "${UIPATH_ORCH_URL}",
-                    orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
-                    folderName: "${UIPATH_ORCH_FOLDER_NAME}",
+                    orchestratorAdd`_ORCH_FOLDER_NAME}",
                     environments: "Dev",
-                    //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “credentialsId”],
-                    credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
+                    credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “credentialsId”],
+                    //credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
                     traceLevel: 'None',
                     entryPointPaths: 'Main.xaml',
                     createProcess: false
