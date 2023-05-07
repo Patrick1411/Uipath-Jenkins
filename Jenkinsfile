@@ -52,7 +52,7 @@ pipeline {
                     environments: "Dev",
                     //credentials: UserPass(credentialsId: 'UipathCredentials'), 
                     //credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
-                    ExternalApp: ExternalApp(
+                    externalApp: ExternalApp(
                         accountForApp: "${UIPATH_ORCH_LOGICAL_NAME}",
                         applicationId: "24b90442-c557-47c2-9ba3-1ae804c0954c",
                         applicationSecret: "X0A@Ra4Qc9lmbef6",
