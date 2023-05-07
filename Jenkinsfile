@@ -9,7 +9,7 @@ pipeline {
         UIPATH_ORCH_URL = "https://cloud.uipath.com/smartzbkcgom/DefaultTenant/orchestrator_"
         UIPATH_ORCH_TENANT_NAME = "DefaultTenant"
         UIPATH_ORCH_FOLDER_NAME = "CI-CD Uipath"
-        UIPATH_ORCH_LOGICAL_NAME = "Ninh Vu"
+        UIPATH_ORCH_LOGICAL_NAME = "Truong"
     }
 
     stages {
@@ -47,10 +47,11 @@ pipeline {
                 UiPathDeploy (
                     packagePath: "Output\\${env.BUILD_NUMBER}",
                     orchestratorAddress: "${UIPATH_ORCH_URL}",
-			  orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
-			  folderName: "${UIPATH_ORCH_FOLDER_NAME}",
+			        orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
+			        folderName: "${UIPATH_ORCH_FOLDER_NAME}",
                     environments: "Dev",
-                    credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'UipathCredentials'),
+                    credentials: UserPass(credentialsId: 'UipathCredentials'), 
+                    //credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'UipathCredentials'),
                     traceLevel: 'None',
                     entryPointPaths: 'Main.xaml',
                     createProcess: false
