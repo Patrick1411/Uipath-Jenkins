@@ -9,7 +9,7 @@ pipeline {
         UIPATH_ORCH_URL = "https://cloud.uipath.com/smartzbkcgom"
         UIPATH_ORCH_TENANT_NAME = "DefaultTenant"
         UIPATH_ORCH_FOLDER_NAME = "CI-CD Uipath"
-        UIPATH_ORCH_LOGICAL_NAME = "anupaminc"
+        UIPATH_ORCH_LOGICAL_NAME = "ninh.vu@bnksolution.com"
     }
 
     stages {
@@ -50,8 +50,8 @@ pipeline {
                     orchestratorTenant: "${UIPATH_ORCH_TENANT_NAME}",
                     folderName: "${UIPATH_ORCH_FOLDER_NAME}",
                     environments: ["Dev"],
-                    credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “credentialsId”],
-                    //credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
+                    //credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “credentialsId”],
+                    credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
                     traceLevel: 'None',
                     entryPointPaths: 'Main.xaml',
                     createProcess: True
