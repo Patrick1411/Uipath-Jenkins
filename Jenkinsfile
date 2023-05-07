@@ -46,7 +46,7 @@ pipeline {
                 echo "Deploying ${env.BRANCH_NAME} to orchestrator"
                 UiPathDeploy (
                     packagePath: "Output\\${env.BUILD_NUMBER}",
-                    orchestratorAdd`_ORCH_FOLDER_NAME}",
+                    orchestratorAddress: "${UIPATH_ORCH_URL}",
                     environments: "Dev",
                     credentials: [$class: 'UserPassAuthenticationEntry', credentialsId: “credentialsId”],
                     //credentials: Token(accountName: "${UIPATH_ORCH_LOGICAL_NAME}", credentialsId: 'APIUserKey'),
