@@ -6,7 +6,7 @@ pipeline {
         MAJOR = '1'
 	    MINOR = '5'
         //Orchestrator Services
-        UIPATH_ORCH_URL = "https://cloud.uipath.com/cicdcloud"
+        UIPATH_ORCH_URL = "https://cloud.uipath.com/smartzbkcgom"
         UIPATH_ORCH_TENANT_NAME = "DefaultTenant"
         UIPATH_ORCH_FOLDER_NAME = "CI-CD Uipath"
         UIPATH_ORCH_LOGICAL_NAME = "anupaminc"
